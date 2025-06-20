@@ -12,16 +12,11 @@
         <div class="container">
             <div class="logo"><a href="">⚡ EVCharge</a></div>
             <ul class="nav-links">
-                <li><a href="">Home</a></li>
-                <li><a href="">Find Stations</a></li>
+                <li><a href="">Home</a></li>                
                 <li><a href="">How It Works</a></li>
                 <li><a href="">Contact</a></li>
-                
-                    <li><a href="">My Bookings</a></li>
-                    <li><a href="">Logout</a></li>
-                
-                    <li><a href="">Login</a></li>
-                    <li><a href="{% url 'signup' %}" class="signup-btn">Sign Up</a></li>
+                <li><a href="{% url 'login' %}" class="signup-btn">Login</a></li>
+                <li><a href="{% url 'signup' %}" class="signup-btn">Sign Up</a></li>
                 
             </ul>
         </div>
@@ -34,5 +29,10 @@
             <a href="" class="hero-btn">Find a Station</a>
         </div>
     </header>
+    
+    <div class="last">
+        hello
+    </div>
+
 </body>
 </html>

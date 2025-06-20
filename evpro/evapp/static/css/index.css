@@ -44,10 +44,9 @@ body {
 }
 
 .signup-btn {
-    background-color: #4ee1c3;
     padding: 0.5rem 1rem;
-    border-radius: 4px;
-    color: #000;
+    border-radius: 2px;
+    color: rgb(53, 34, 53);
     font-weight: bold;
 }
 
@@ -81,4 +80,13 @@ body {
 
 .hero-btn:hover {
     background-color: #38c0a8;
+}
+
+.last{
+    background: linear-gradient(to right, #0f2027, #203a43, #2c5364);  
+    
+    height: 290px;
+    width: 100%;
+
+
 }
