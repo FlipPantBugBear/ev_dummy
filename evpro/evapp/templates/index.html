@@ -1,0 +1,38 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>EVCharge - Home</title>
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo"><a href="">⚡ EVCharge</a></div>
+            <ul class="nav-links">
+                <li><a href="">Home</a></li>
+                <li><a href="">Find Stations</a></li>
+                <li><a href="">How It Works</a></li>
+                <li><a href="">Contact</a></li>
+                
+                    <li><a href="">My Bookings</a></li>
+                    <li><a href="">Logout</a></li>
+                
+                    <li><a href="">Login</a></li>
+                    <li><a href="{% url 'signup' %}" class="signup-btn">Sign Up</a></li>
+                
+            </ul>
+        </div>
+    </nav>
+
+    <header class="hero-section">
+        <div class="hero-content">
+            <h1>Power Your Journey</h1>
+            <p>Find, book, and manage EV charging stations in one place.</p>
+            <a href="" class="hero-btn">Find a Station</a>
+        </div>
+    </header>
+</body>
+</html>
