@@ -1,0 +1,33 @@
+<!-- templates/admin/edit_station.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Edit Charging Station</title>
+</head>
+<body>
+    <h1>Edit Charging Station</h1>
+
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <label>Name:</label><br>
+        <input type="text" name="name" value="{{ station.name }}" required><br><br>
+
+        <label>Location:</label><br>
+        <input type="text" name="location" value="{{ station.location }}" required><br><br>
+
+        <label>Available:</label>
+        <input type="checkbox" name="is_available" {% if station.is_available %}checked{% endif %}><br><br>
+
+        <label>Image:</label><br>
+        {% if station.image %}
+            <img src="{{ station.image.url }}" width="100"><br>
+        {% endif %}
+        <input type="file" name="image"><br><br>
+
+        <button type="submit">Update Station</button>
+    </form>
+
+    <br>
+    <a href="{% url 'manage_stations' %}">🔙 Back to Stations</a>
+</body>
+</html>

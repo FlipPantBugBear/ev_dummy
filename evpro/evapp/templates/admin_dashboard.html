@@ -1,0 +1,17 @@
+<!-- templates/admin/admin_dashboard.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Dashboard</title>
+</head>
+<body>
+    <h1>Welcome Admin</h1>
+    <p>Total Charging Stations: {{ station_count }}</p>
+    <p>Total Users: {{ user_count }}</p>
+    <p>Total Bookings: {{ booking_count }}</p>
+
+    <a href="{% url 'manage_stations' %}">Manage Charging Stations</a><br>
+    <a href="{% url 'manage_users' %}">Manage Users</a><br>
+    <!-- Add more as you build -->
+</body>
+</html>

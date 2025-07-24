@@ -1,0 +1,18 @@
+<h2>Available Charging Stations</h2>
+
+<form method="get">
+    <label><input type="checkbox" name="available_only" value="1" {% if request.GET.available_only %}checked{% endif %}> Show only stations with available slots</label>
+    <button type="submit">Filter</button>
+</form>
+
+<ul>
+    {% for station in stations %}
+        <li>
+            <a href="{% url 'station_detail' station.id %}">{{ station.name }}</a> -
+            Location: {{ station.location }} |
+            Available Slots: {{ station.available_slots }}/{{ station.total_slots }}
+        </li>
+    {% empty %}
+        <li>No charging stations found.</li>
+    {% endfor %}
+</ul>

@@ -1,11 +1,181 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Home | EVCharge</title>
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #333;
+            color: #fff;
+            padding: 1rem 2rem;
+        }
+
+        .navbar .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .navbar ul {
+            list-style: none;
+            display: flex;
+            gap: 1rem;
+            margin: 0;
+        }
+
+        .navbar a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        main {
+            padding: 2rem;
+        }
+
+        .welcome h2 {
+            color: #333;
+        }
+
+        .stations, .bookings, .account-info, .support {
+            background-color: #fff;
+            margin-top: 2rem;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .station-list {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .station {
+            background-color: #eef;
+            padding: 1rem;
+            border-radius: 5px;
+            width: 200px;
+        }
+
+        .station h4 {
+            margin: 0;
+        }
+
+        button {
+            margin-top: 0.5rem;
+            padding: 0.5rem 1rem;
+            background-color: #28a745;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+        }
+
+        th, td {
+            padding: 0.75rem;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f0f0f0;
+        }
+    </style>
 </head>
 <body>
-    HOME
+    <header>
+        <div class="navbar">
+            <div class="logo">⚡ EVCharge</div>
+            <nav>
+                <ul>
+                    <li><a href="{% url 'home' %}">Home</a></li>
+                    <li><a href="{% url 'logout' %}">Logout</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="welcome">
+            <h1>Welcome {{ name }}!</h1>
+            <p>Your vehicle number is: {{ vehicle }}</p>
+        </section>
+
+        <section class="stations">
+            <h3>Nearby Charging Stations</h3>
+            <div class="station-list">
+                {% for station in stations %}
+                    <div class="station">
+                        <h4>{{ station.name }}</h4>
+                        <p>Location: {{ station.location }}</p>
+                        <p>Slots Available: {{ station.available_slots }}</p>
+                        <button>Book Now</button>
+                    </div>
+                {% empty %}
+                    <p>No charging stations found.</p>
+                {% endfor %}
+            </div>
+        </section>
+
+        <section class="bookings">
+            <h3>Your Bookings</h3>
+            {% if bookings %}
+            <table>
+                <thead>
+                    <tr>
+                        <th>Station</th>
+                        <th>Date</th>
+                        <th>Time</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for booking in bookings %}
+                        <tr>
+                            <td>{{ booking.station.name }}</td>
+                            <td>{{ booking.date }}</td>
+                            <td>{{ booking.time }}</td>
+                            <td>{{ booking.status }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            {% else %}
+                <p>No bookings yet.</p>
+            {% endif %}
+        </section>
+
+        <section class="account-info">
+            <h3>My Account Info</h3>
+            <p>Name: {{ user.first_name }} {{ user.last_name }}</p>
+            <p>Email: {{ user.email }}</p>
+            <p>Phone: {{ user.phone }}</p>
+            <p>Vehicle: {{ user.vehicle_number }}</p>
+        </section>
+
+        <section class="support">
+            <h3>Need Help?</h3>
+            <p>Email: support@evcharge.in</p>
+            <p>Phone: +91 99999 99999</p>
+        </section>
+    </main>
 </body>
 </html>

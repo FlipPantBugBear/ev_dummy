@@ -1,0 +1,6 @@
+<h2>{{ station.name }}</h2>
+<p>Location: {{ station.location }}</p>
+<p>Available Slots: {{ station.available_slots }} / {{ station.total_slots }}</p>
+<p>Vehicles Currently Plugged In: {{ station.vehicles_plugged_in }}</p>
+
+<a href="{% url 'station_list' %}">Back to list</a>
